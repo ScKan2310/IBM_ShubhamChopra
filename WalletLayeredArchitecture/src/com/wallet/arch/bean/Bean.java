@@ -10,6 +10,13 @@ public class Bean {
 	int transactionNumber;
 	int transctionAmount;
 	Date transactionTime;
+	String exception;
+	public String getException() {
+		return exception;
+	}
+	public void setException(String exception) {
+		this.exception = exception;
+	}
 	public int getAccountNumber() {
 		return accountNumber;
 	}

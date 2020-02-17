@@ -1,6 +1,5 @@
 package com.wallet.arch.service;
 
-import java.sql.ResultSet;
 import java.util.List;
 
 import com.wallet.arch.bean.Bean;

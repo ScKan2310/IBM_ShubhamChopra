@@ -1,51 +1,13 @@
 package com.wallet.arch.ui;
 
-import java.sql.SQLException;
 import java.util.Scanner;
 
 import com.wallet.arch.bean.Bean;
 import com.wallet.arch.service.WalletServiceArchi;
 
 public class WalletUIArchi {
-	public static void problemConnection(SQLException e) {
-		System.out.println("problem while connecting " + e.getMessage());
-	}
 	
-	public static void problemInserting(SQLException e) {
-		System.out.println("problem while inserting " + e.getMessage());
-	}
 	
-	public static void problemUpdatingName(SQLException e) {
-		System.out.println("problem while updating name " + e.getMessage());
-	}
-	
-	public static void problemUpdatingNumber(SQLException e) {
-		System.out.println("problem while updating number " + e.getMessage());
-	}
-	
-	public static void problemGettingBalance(SQLException e) {
-		System.out.println("problem while printing balance " + e.getMessage());
-	}
-	
-	public static void problemCheckingBalance(SQLException e) {
-		System.out.println("problem while checking balance " + e.getMessage());
-	}
-	
-	public static void problemDepositing(SQLException e) {
-		System.out.println("problem while depositing funds " + e.getMessage());
-	}
-	
-	public static void problemWithdrawing(SQLException e) {
-		System.out.println("problem while withdrawing funds " + e.getMessage());
-	}
-	
-	public static void problemPrintingTransaction(SQLException e) {
-		System.out.println("problem while printing transactions " + e.getMessage());
-	}
-	
-	public static void problemPrintingData(SQLException e) {
-		System.out.println("problem while printing data " + e.getMessage());
-	}
 	
  	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
@@ -102,5 +64,49 @@ public class WalletUIArchi {
 			if(n==11)
 				break;
 		}
+	}
+ 	
+ 	public static void problemConnection(Bean b) {
+		System.out.println("problem while connecting " + b.getException());
+	}
+	
+	public static void problemInserting(Bean b) {
+		System.out.println("problem while inserting " + b.getException());
+	}
+	
+	public static void problemUpdatingName(Bean b) {
+		System.out.println("problem while updating name " + b.getException());
+	}
+	
+	public static void problemUpdatingNumber(Bean b) {
+		System.out.println("problem while updating number " + b.getException());
+	}
+	
+	public static void problemGettingBalance(Bean b) {
+		System.out.println("problem while printing balance " + b.getException());
+	}
+	
+	public static void problemCheckingBalance(Bean b) {
+		System.out.println("problem while checking balance " + b.getException());
+	}
+	
+	public static void problemDepositing(Bean b) {
+		System.out.println("problem while depositing funds " + b.getException());
+	}
+	
+	public static void problemWithdrawing(Bean b) {
+		System.out.println("problem while withdrawing funds " + b.getException());
+	}
+	
+	public static void problemPrintingTransaction(Bean b) {
+		System.out.println("problem while printing transactions " + b.getException());
+	}
+	
+	public static void problemPrintingData(Bean b) {
+		System.out.println("problem while printing data " + b.getException());
+	}
+	
+	public static void printNoFunds(Bean b) {
+		System.out.println("not enough funds");
 	}
 }

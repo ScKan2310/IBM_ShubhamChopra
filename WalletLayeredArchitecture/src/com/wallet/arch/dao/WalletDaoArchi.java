@@ -20,7 +20,9 @@ public class WalletDaoArchi implements WalletDaoInterfaceArchi {
 		try {
 			dbCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/wallet?serverTimezone=UTC", "root", "");
 		} catch (SQLException e) {
-			WalletUIArchi.problemConnection(e);
+			Bean b = new Bean();
+			b.setException(e.getMessage());
+			WalletUIArchi.problemConnection(b);
 		}
 	}
 	
@@ -37,7 +39,8 @@ public class WalletDaoArchi implements WalletDaoInterfaceArchi {
 			if(pstmt.executeUpdate()>0)
 				n=n+1;	
 		} catch (SQLException e) {
-			WalletUIArchi.problemInserting(e);
+			b.setException(e.getMessage());
+			WalletUIArchi.problemInserting(b);
 		}
 		return n;
 	}
@@ -53,10 +56,9 @@ public class WalletDaoArchi implements WalletDaoInterfaceArchi {
 			
 			if(pstmt.executeUpdate()>0)
 				n=n+1;
-			else
-				System.out.println("name not updatable");
 		} catch (SQLException e) {
-			WalletUIArchi.problemUpdatingName(e);
+			b.setException(e.getMessage());
+			WalletUIArchi.problemUpdatingName(b);
 		}
 		return n;
 	}
@@ -73,7 +75,8 @@ public class WalletDaoArchi implements WalletDaoInterfaceArchi {
 			if(pstmt.executeUpdate()>0)
 				n=n+1;
 		} catch (SQLException e) {
-			WalletUIArchi.problemUpdatingNumber(e);
+			b.setException(e.getMessage());
+			WalletUIArchi.problemUpdatingNumber(b);
 		}
 		return n;
 	}
@@ -89,7 +92,8 @@ public class WalletDaoArchi implements WalletDaoInterfaceArchi {
 			while(rs.next())
 				b.setAccountBalance(rs.getInt("accountBalance"));
 		} catch (SQLException e) {
-			WalletUIArchi.problemGettingBalance(e);
+			b.setException(e.getMessage());
+			WalletUIArchi.problemGettingBalance(b);
 		}
 		return b;
 	}
@@ -114,7 +118,8 @@ public class WalletDaoArchi implements WalletDaoInterfaceArchi {
 					t = true;
 			}
 		} catch (SQLException e ) {
-			WalletUIArchi.problemCheckingBalance(e);
+			b.setException(e.getMessage());
+			WalletUIArchi.problemCheckingBalance(b);
 		}
 		return t;
 		
@@ -150,7 +155,8 @@ public class WalletDaoArchi implements WalletDaoInterfaceArchi {
 			if(pstmt.executeUpdate()>0)
 				flag=flag+1;
 		} catch (SQLException e) {
-			WalletUIArchi.problemDepositing(e);
+			b.setException(e.getMessage());
+			WalletUIArchi.problemDepositing(b);
 		}
 		return flag;
 	}
@@ -184,11 +190,12 @@ public class WalletDaoArchi implements WalletDaoInterfaceArchi {
 			if(pstmt.executeUpdate()>0)
 				flag=flag+1;
 		} catch (SQLException e) {
-			WalletUIArchi.problemWithdrawing(e);
+			b.setException(e.getMessage());
+			WalletUIArchi.problemWithdrawing(b);
 		}
 		}
 		else
-			System.out.println("Not enough funds");
+			WalletUIArchi.printNoFunds(b);
 		
 		return flag;
 	}
@@ -208,7 +215,8 @@ public class WalletDaoArchi implements WalletDaoInterfaceArchi {
 				bilers.add(b1);
 			}
 		} catch (SQLException e) {
-			WalletUIArchi.problemPrintingTransaction(e);
+			b.setException(e.getMessage());
+			WalletUIArchi.problemPrintingTransaction(b);
 		}
 		return bilers ;
 	}
@@ -228,7 +236,8 @@ public class WalletDaoArchi implements WalletDaoInterfaceArchi {
 				bilers.add(b1);
 			}
 		} catch (SQLException e) {
-			WalletUIArchi.problemPrintingData(e);
+			b.setException(e.getMessage());
+			WalletUIArchi.problemPrintingData(b);
 		}
 		return bilers;
 	}
