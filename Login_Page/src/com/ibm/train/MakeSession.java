@@ -16,7 +16,7 @@ public class MakeSession extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		HttpSession session = request.getSession();
-		session.setAttribute("userName", "shubham");
+		
 		RequestDispatcher dispatch = request.getRequestDispatcher("login.html");
 		dispatch.include(request, response);
 	}

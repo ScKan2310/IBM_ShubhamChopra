@@ -33,8 +33,7 @@ public class Login extends HttpServlet {
 			RequestDispatcher dispatch = null;
 			String userName = request.getParameter("userName");
 			String passWord = request.getParameter("passWord");
-			out.println("<br> user name is: " + userName);
-			
+			request.getSession().setAttribute("userName", userName);
 			String checkQuery = "select userName from Details";
 			String checkPassWord = "select passWord from Details where userName=?";
 			try {
@@ -42,18 +41,17 @@ public class Login extends HttpServlet {
 				dbCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/logindata?serverTimezone=UTC","root","");
 				pstmt = dbCon.prepareStatement(checkQuery);
 				ResultSet rs = pstmt.executeQuery();
-				if(rs.next()) {
+				while(rs.next()) {
 					if(userName.trim().equals(rs.getString("userName")))
 						n=n+1;
 				}
 				pstmt = dbCon.prepareStatement(checkPassWord);
 				pstmt.setString(1, userName);
 				rs = pstmt.executeQuery();
-				if(rs.next()) {
+				while(rs.next()) {
 					if(passWord.trim().equals(rs.getString("passWord")))
 						n=n+1;
 				}
-				request.getSession().getAttribute("userName");
 				if(n==2) {
 					dispatch = request.getRequestDispatcher("logout.html");
 					dispatch.include(request, response);
