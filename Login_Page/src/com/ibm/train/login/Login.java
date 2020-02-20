@@ -29,7 +29,7 @@ public class Login extends HttpServlet {
 			dispatch.include(request, response);
 		}
 		else {
-			int n=0;
+			int n=0,m=0;
 			RequestDispatcher dispatch = null;
 			String userName = request.getParameter("userName");
 			String passWord = request.getParameter("passWord");
@@ -42,8 +42,10 @@ public class Login extends HttpServlet {
 				pstmt = dbCon.prepareStatement(checkQuery);
 				ResultSet rs = pstmt.executeQuery();
 				while(rs.next()) {
-					if(userName.trim().equals(rs.getString("userName")))
+					if(userName.trim().equals(rs.getString("userName"))) {
 						n=n+1;
+						m=m+1;
+					}
 				}
 				pstmt = dbCon.prepareStatement(checkPassWord);
 				pstmt.setString(1, userName);
@@ -54,6 +56,11 @@ public class Login extends HttpServlet {
 				}
 				if(n==2) {
 					dispatch = request.getRequestDispatcher("logout.html");
+					dispatch.include(request, response);
+				}
+				else if(m==0) {
+					out.println("username not registered <br>");
+					dispatch = request.getRequestDispatcher("Index.html");
 					dispatch.include(request, response);
 				}
 				else {

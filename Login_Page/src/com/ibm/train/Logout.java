@@ -21,8 +21,10 @@ public class Logout extends HttpServlet {
 			RequestDispatcher dispatch = request.getRequestDispatcher("Index.html");
 			dispatch.include(request, response);
 		}
-		else
+		else {
 			request.getSession().invalidate();
+			response.sendRedirect("Index.html");
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
