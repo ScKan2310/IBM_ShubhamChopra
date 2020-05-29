@@ -15,7 +15,7 @@ public class OpenBreweryClient {
 	@Value("${rapidapi.key.name}")
 	String openBreweryKeyName;
 	
-	@Value("${rapidapi.key.valu}")
+	@Value("${rapidapi.key.value}")
 	String openBreweryKeyValue;
 	
 	@Value("${rapidapi.host.name}")
@@ -24,48 +24,10 @@ public class OpenBreweryClient {
 	@Value("${rapidapi.host.openbrewery.value}")
 	String openBreweryHostValue;
 	
-	public String getBreweries(){
-		try {
-			HttpResponse<String> response = Unirest.get(openBreweryURL + "?by_state=NY&by_name=cooper&by_tag=patio&by_type=micro")
-					.header(openBreweryHostName, openBreweryHostValue)
-					.header(openBreweryKeyName, openBreweryKeyValue)
-					.asString();
-			return (response.getBody());
-		}catch(UnirestException e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
 	
 	public String getABrewery(Integer id) {
 		try {
-			HttpResponse<String> response = Unirest.get(openBreweryURL + id)
-					.header(openBreweryHostName, openBreweryHostValue)
-					.header(openBreweryKeyName, openBreweryKeyValue)
-					.asString();
-			return (response.getBody());
-		} catch (UnirestException e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
-	
-	public String getAutoComplete(String reference) {
-		try {
-			HttpResponse<String> response = Unirest.get(openBreweryURL + "/autocomplete?query="+ reference)
-					.header(openBreweryHostName, openBreweryHostValue)
-					.header(openBreweryKeyName, openBreweryKeyValue)
-					.asString();
-			return (response.getBody());
-		} catch (UnirestException e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
-	
-	public String getSearch(String reference) {
-		try {
-			HttpResponse<String> response = Unirest.get(openBreweryURL + "/search?query=" + reference)
+			HttpResponse<String> response = Unirest.get(openBreweryURL + "/" + id)
 					.header(openBreweryHostName, openBreweryHostValue)
 					.header(openBreweryKeyName, openBreweryKeyValue)
 					.asString();
