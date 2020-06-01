@@ -3,6 +3,7 @@ package com.ibm.assessment;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import com.mashape.unirest.http.HttpResponse;
+import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 
@@ -25,7 +26,7 @@ public class OpenBreweryClient {
 	String openBreweryHostValue;
 	
 	
-	public String getABrewery(Integer id) {
+	public String getABrewery(String id) {
 		try {
 			HttpResponse<String> response = Unirest.get(openBreweryURL + "/" + id)
 					.header(openBreweryHostName, openBreweryHostValue)

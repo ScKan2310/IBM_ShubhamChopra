@@ -1,0 +1,70 @@
+body {
+  font-family: "Open Sans", serif;
+}
+
+.wrapper {
+  background: linear-gradient(to right, #ee6677, #ee2244);
+  background-attachment: fixed;
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title-container {
+  height: 90vh;
+  text-align: center;
+  padding-bottom: 100px;
+}
+
+.title-container_title {
+  font-size: 100px;
+}
+
+.title-container_subtitle {
+  font-size: 30px;
+}
+
+.form-container {
+  background-color: #272626;
+  height : 40vh;
+  width: auto;
+  border: 0;
+  border-radius: 50px;
+  padding-top: 30px;
+}
+
+input[type = "text"]{
+  text-align: center;
+  display: inline-block;
+  margin-left: 7%;
+  background: linear-gradient(to right, #fff, #119dee);
+  border: solid ;
+  border-radius: 20px;
+  outline: none;
+  font-size: 20px;
+}
+
+button {
+  border: 0;
+  border-radius: 20px;
+  font-size: 20px;
+  background-color: #119dee;
+}
+
+.brewery_info {
+  font-size: 20px;
+  font-weight: 200;
+  color: azure;
+}
+
+.brewery_key {
+  color : #f16051;
+
+}
+
+.brewery_value {
+  color: aliceblue;
+}
+
